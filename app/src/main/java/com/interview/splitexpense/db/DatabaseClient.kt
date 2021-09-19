@@ -30,12 +30,12 @@ object DatabaseClient {
     fun getSharedPreferences(context: Context) =
         context.getSharedPreferences(ExpenseConstants.KEY_PREFERENCES, 0)
 
-    fun updateLoggedInUser(context: Context, userName: String) =
+    fun updateLoggedInUser(context: Context, userName: String?) =
         getSharedPreferences(context).edit().putString(ExpenseConstants.KEY_PREF_USER, userName)
             .apply()
 
     fun getLoggedInUser(context: Context) =
-        getSharedPreferences(context).getString(ExpenseConstants.KEY_PREF_USER, "")
+        getSharedPreferences(context).getString(ExpenseConstants.KEY_PREF_USER, null)
 
 
     fun getAppUsers(context: Context) =

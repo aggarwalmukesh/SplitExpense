@@ -6,4 +6,5 @@
     <dimen name="medium_font">19sp</dimen>
     <dimen name="forty_dp">40dp</dimen>
     <dimen name="five_dp">5dp</dimen>
+    <dimen name="large_font">22sp</dimen>
 </resources>

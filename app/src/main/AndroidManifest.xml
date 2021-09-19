@@ -10,11 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplitExpense">
         <activity
-            android:name=".view.DashboardActivity"
+            android:name=".view.ProfileActivity"
             android:exported="true" />
         <activity
+            android:name=".view.ExpenseDetailsActivity"
+            android:exported="true"
+            android:label="@string/split_title" />
+        <activity
+            android:name=".view.DashboardActivity"
+            android:exported="true"
+            android:label="@string/split_title" />
+        <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/split_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,4 +7,10 @@
     <string name="str_paid_by">Paid By:</string>
     <string name="str_shared_by">Shared By:</string>
     <string name="str_equally_shared">Everyone equally</string>
+    <string name="str_description">Description</string>
+    <string name="str_amount">Amount(INR)</string>
+    <string name="str_date">Date (dd/mm/yyyy)</string>
+    <string name="str_title">Title</string>
+    <string name="split_title">Split Expense</string>
+    <string name="enter_input">Mandatory Field</string>
 </resources>

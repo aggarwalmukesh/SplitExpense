@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.interview.splitexpense.db.DatabaseClient
 import com.interview.splitexpense.view.DashboardActivity
 import com.interview.splitexpense.viewmodel.LoginViewModeFactory
 import com.interview.splitexpense.viewmodel.LoginViewModel
@@ -34,8 +35,8 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.registerForLogin().observe(this, {
             // if user is validated, it will return user otherwise null
             it?.let {
+                loginViewModel.saveUser()
                 val intent = Intent(this, DashboardActivity::class.java)
-                intent.putExtra(ExpenseConstants.KEY_USER, it)
                 startActivity(intent)
                 finish()
             }
@@ -44,6 +45,12 @@ class LoginActivity : AppCompatActivity() {
                 Snackbar.LENGTH_INDEFINITE
             ).show()
         })
+
+        DatabaseClient.getLoggedInUser(this)?.apply {
+            val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         loginViewModel.getAllUsers()
     }

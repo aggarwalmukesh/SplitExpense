@@ -5,17 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.interview.splitexpense.ExpenseConstants
 import com.interview.splitexpense.R
 import com.interview.splitexpense.adapter.ExpenseAdapter.ViewHolder
+import com.interview.splitexpense.interfaces.ExpenseCallback
 import com.interview.splitexpense.model.Expense
-import java.text.SimpleDateFormat
 import java.util.*
 
-val simpleDateFormat = SimpleDateFormat("MMM\ndd\nyyyy")
-class ExpenseAdapter(var expenseRecords: List<Expense>) : RecyclerView.Adapter<ViewHolder>() {
-    fun updateExpense(expenseRecords: List<Expense>) {
-        this.expenseRecords = expenseRecords
-    }
+class ExpenseAdapter(var expenseRecords: List<Expense>, val expenseCallback: ExpenseCallback)
+    : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -26,6 +24,9 @@ class ExpenseAdapter(var expenseRecords: List<Expense>) : RecyclerView.Adapter<V
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindExpense(expenseRecords.get(position))
+        holder.itemView.setOnClickListener {
+            expenseCallback.expenseItemClicked(expenseRecords.get(position))
+        }
     }
 
     override fun getItemCount(): Int {
@@ -43,7 +44,7 @@ class ExpenseAdapter(var expenseRecords: List<Expense>) : RecyclerView.Adapter<V
                 expenseTitle.text = it.title
                 expenseAmount.text = "Total Amount: ${it.amount}"
                 expensePaidBy.text = "Paid By: ${it.paidBy}"
-                expenseDate.text = simpleDateFormat.format(Date())
+                expenseDate.text = ExpenseConstants.DATE_FORMAT_EXPENSE_LIST.format(Date())
             }
         }
     }
