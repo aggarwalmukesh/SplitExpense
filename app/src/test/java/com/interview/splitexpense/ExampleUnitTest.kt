@@ -1,4 +1,4 @@
-package com.test.splitexpense
+package com.interview.splitexpense
 
 import org.junit.Test
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.test.splitexpense">
+    package="com.interview.splitexpense">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplitExpense">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.DashboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
