@@ -6,6 +6,8 @@
         <entry key="..\:/AndroidWork/SplitExpense/SplitExpense/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
         <entry key="..\:/AndroidWork/SplitExpense/SplitExpense/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/AndroidWork/SplitExpense/SplitExpense/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidWork/SplitExpense/SplitExpense/app/src/main/res/layout/layout_add_expense.xml" value="0.1" />
+        <entry key="..\:/AndroidWork/SplitExpense/SplitExpense/app/src/main/res/layout/row_expense.xml" value="0.25" />
       </map>
     </option>
   </component>

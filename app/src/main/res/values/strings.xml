@@ -3,4 +3,8 @@
     <string name="str_email">Email Id</string>
     <string name="str_login">Login</string>
     <string name="str_invalid_user">Please enter details of a valid user</string>
+    <string name="str_save_expense">Save Expense</string>
+    <string name="str_paid_by">Paid By:</string>
+    <string name="str_shared_by">Shared By:</string>
+    <string name="str_equally_shared">Everyone equally</string>
 </resources>

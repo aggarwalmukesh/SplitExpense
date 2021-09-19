@@ -39,17 +39,13 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-            if (it != null) {
-
-            } else {
-                Snackbar.make(
-                    btnLogin, getString(R.string.str_invalid_user),
-                    Snackbar.LENGTH_INDEFINITE
-                ).show()
-            }
+            Snackbar.make(
+                btnLogin, getString(R.string.str_invalid_user),
+                Snackbar.LENGTH_INDEFINITE
+            ).show()
         })
 
-        loginViewModel.checkIfUsersExist()
+        loginViewModel.getAllUsers()
     }
 
     private fun initialse() {
