@@ -10,8 +10,8 @@ interface ExpenseDao {
     @Query("SELECT * FROM users")
     fun getAllUsers(): List<Users>
 
-    @Query("SELECT * FROM users")
-    fun fetchUser(email: String, password: String): Users
+    @Query("SELECT * FROM users WHERE email= :userEmail AND password= :pwd")
+    fun fetchUser(userEmail: String, pwd: String): Users
 
     @Insert
     fun insertAll(vararg users: Users)

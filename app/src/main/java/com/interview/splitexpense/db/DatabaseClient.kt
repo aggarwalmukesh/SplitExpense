@@ -12,8 +12,8 @@ object DatabaseClient {
 
     private const val DB_NAME = "expense_db"
     private var appDatabase: AppDatabase? = null
-    private var isValidUserMutableData: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    private var usersListMutableData: MutableLiveData<List<Users>> = MutableLiveData<List<Users>>()
+    private var validUserMutableData: MutableLiveData<Users> = MutableLiveData()
+    private var usersListMutableData: MutableLiveData<List<Users>> = MutableLiveData()
     private fun getDbInstance(context: Context) : AppDatabase {
         if (appDatabase == null) {
             appDatabase = Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME).build()
@@ -31,17 +31,17 @@ object DatabaseClient {
 
     fun registerUsers(): MutableLiveData<List<Users>> = usersListMutableData
 
-    fun registerForLogin(): MutableLiveData<Boolean> = isValidUserMutableData
+    fun registerForLogin(): MutableLiveData<Users> = validUserMutableData
 
-    fun addUsers(context: Context, users: Users) {
+    fun addUsers(context: Context, users: Array<Users>) {
         CoroutineScope(Dispatchers.IO).launch {
-            getDao(context).insertAll(users)
+            getDao(context).insertAll(*users)
         }
     }
 
-    fun isValidUser(context: Context, email: String, password: String) {
+    fun findValidUser(context: Context, email: String, password: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            getDao(context).fetchUser(email, password)
+            validUserMutableData.postValue(getDao(context).fetchUser(email, password))
         }
     }
 }

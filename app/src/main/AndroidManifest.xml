@@ -13,7 +13,7 @@
             android:name=".view.DashboardActivity"
             android:exported="true" />
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
