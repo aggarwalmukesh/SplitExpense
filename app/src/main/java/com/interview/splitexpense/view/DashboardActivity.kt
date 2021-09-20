@@ -1,5 +1,6 @@
 package com.interview.splitexpense.view
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -20,6 +21,9 @@ import com.interview.splitexpense.interfaces.ExpenseCallback
 import com.interview.splitexpense.model.Expense
 import com.interview.splitexpense.viewmodel.DashboardViewModeFactory
 import com.interview.splitexpense.viewmodel.DashboardViewModel
+import java.util.*
+import javax.xml.datatype.DatatypeConstants.MONTHS
+import kotlin.collections.ArrayList
 
 class DashboardActivity : AppCompatActivity(), ExpenseCallback {
     private lateinit var recyclerView: RecyclerView
@@ -27,6 +31,7 @@ class DashboardActivity : AppCompatActivity(), ExpenseCallback {
     private lateinit var fabAddButton: FloatingActionButton
     private lateinit var dashBoardViewModel: DashboardViewModel
     private var loggedInUser: String? = null
+    val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,8 +60,10 @@ class DashboardActivity : AppCompatActivity(), ExpenseCallback {
         recyclerView = findViewById(R.id.recycler_view)
         layoutNoRecords = findViewById(R.id.layout_no_records)
         fabAddButton = findViewById(R.id.fab_add)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_launcher_background);
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.menu)
+        }
         loggedInUser = DatabaseClient.getLoggedInUser(this)
         fabAddButton.setOnClickListener {
             val dialog = BottomSheetDialog(this)
@@ -66,8 +73,17 @@ class DashboardActivity : AppCompatActivity(), ExpenseCallback {
             val etExpeseAmount = view.findViewById<EditText>(R.id.et_expense_amount)
             val spExpesePaidBy = view.findViewById<Spinner>(R.id.spinner_paid_by)
             val etExpeseDate = view.findViewById<EditText>(R.id.et_expense_date)
-            dashBoardViewModel.registerForAllUsers().value!!.map { if (it.name == loggedInUser)
-                "You" else it.name }.apply {
+            etExpeseDate.setOnClickListener {
+                calendar.apply {
+                    DatePickerDialog(this@DashboardActivity, { view, year, monthOfYear, dayOfMonth ->
+                        etExpeseDate.setText("${dayOfMonth}/${monthOfYear+1}/$year")
+                    }, get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH)).show()
+                }
+            }
+            dashBoardViewModel.registerForAllUsers().value!!.map {
+                if (it.name == loggedInUser)
+                    "You" else it.name
+            }.apply {
                 spExpesePaidBy.adapter = ArrayAdapter(
                     this@DashboardActivity,
                     android.R.layout.simple_list_item_1, this
@@ -80,20 +96,19 @@ class DashboardActivity : AppCompatActivity(), ExpenseCallback {
                 val expenseDate = etExpeseDate.text.toString()
                 val expenseAmount = etExpeseAmount.text.toString()
                 val expenseDescription = etExpeseDescription.text.toString()
-                val expensePaidBy = spExpesePaidBy.selectedItem.toString()
-
+                val expensePaidBy = dashBoardViewModel.registerForAllUsers().value?.get(spExpesePaidBy.selectedItemPosition)?.name
                 if (expenseTitle.isEmpty()) {
                     etExpeseTitle.error = getString(R.string.enter_input)
                     return@setOnClickListener
                 }
 
-                if (expenseAmount.isEmpty()) {
-                    etExpeseAmount.error = getString(R.string.enter_input)
+                if (expenseDate.isEmpty()) {
+                    etExpeseDate.error = getString(R.string.enter_input)
                     return@setOnClickListener
                 }
 
-                if (expenseDate.isEmpty()) {
-                    etExpeseDate.error = getString(R.string.enter_input)
+                if (expenseAmount.isEmpty()) {
+                    etExpeseAmount.error = getString(R.string.enter_input)
                     return@setOnClickListener
                 }
 
@@ -113,20 +128,23 @@ class DashboardActivity : AppCompatActivity(), ExpenseCallback {
     }
 
     override fun expenseItemClicked(expense: Expense) {
-        val intent = Intent(this, ExpenseDetailsActivity::class.java)
-        intent.putExtra(ExpenseConstants.KEY_EXPENSE, expense)
-        intent.putStringArrayListExtra(ExpenseConstants.KEY_USERS,
-            ArrayList(dashBoardViewModel.registerForAllUsers().value?.map { if (it.name == loggedInUser)
-                "You" else it.name })
-        )
-        startActivity(intent)
+        Intent(this, ExpenseDetailsActivity::class.java).apply {
+            putExtra(ExpenseConstants.KEY_EXPENSE, expense)
+            putStringArrayListExtra(
+                ExpenseConstants.KEY_USERS,
+                ArrayList(dashBoardViewModel.registerForAllUsers().value?.map {
+                    if (it.name == loggedInUser)
+                        "You" else it.name
+                })
+            )
+            startActivity(this)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val intent = Intent(this, ProfileActivity::class.java)
-        intent.putExtra()
+        intent.putExtra(ExpenseConstants.KEY_USER, loggedInUser)
         startActivity(intent)
-
         return true
     }
 }

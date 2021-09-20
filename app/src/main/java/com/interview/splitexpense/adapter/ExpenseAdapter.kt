@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.interview.splitexpense.ExpenseConstants
 import com.interview.splitexpense.R
 import com.interview.splitexpense.adapter.ExpenseAdapter.ViewHolder
+import com.interview.splitexpense.db.DatabaseClient
 import com.interview.splitexpense.interfaces.ExpenseCallback
 import com.interview.splitexpense.model.Expense
 import java.util.*
@@ -43,8 +44,13 @@ class ExpenseAdapter(var expenseRecords: List<Expense>, val expenseCallback: Exp
             expense.let {
                 expenseTitle.text = it.title
                 expenseAmount.text = "Total Amount: ${it.amount}"
-                expensePaidBy.text = "Paid By: ${it.paidBy}"
-                expenseDate.text = ExpenseConstants.DATE_FORMAT_EXPENSE_LIST.format(Date())
+                val paidBy = if (it.paidBy == DatabaseClient.getLoggedInUser(itemView.context))
+                    "You" else it.paidBy
+                expensePaidBy.text = "Paid By: $paidBy"
+                it.date?.let {
+                    expenseDate.text = ExpenseConstants.DATE_FORMAT_EXPENSE_LIST.format(
+                        ExpenseConstants.DATE_FORMAT_EXPENSE_ENTRY.parse(it))
+                }
             }
         }
     }

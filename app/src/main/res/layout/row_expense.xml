@@ -21,7 +21,7 @@
             android:textSize="@dimen/medium_font"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/txt_expense_paid_by"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tool:text="Aug\n1\n2021" />
 
@@ -29,10 +29,10 @@
             android:id="@+id/txt_expense_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_marginStart="@dimen/ten_dp"
             android:textColor="@color/black"
             android:textSize="@dimen/medium_font"
-            app:layout_constraintLeft_toRightOf="@id/txt_date"
+            app:layout_constraintStart_toEndOf="@id/txt_date"
             app:layout_constraintTop_toTopOf="parent"
             tool:text="Expense Title" />
 
@@ -40,10 +40,10 @@
             android:id="@+id/txt_expense_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_marginStart="@dimen/ten_dp"
             android:textColor="@color/black"
             android:textSize="@dimen/small_font"
-            app:layout_constraintLeft_toRightOf="@id/txt_date"
+            app:layout_constraintStart_toEndOf="@id/txt_date"
             app:layout_constraintTop_toBottomOf="@id/txt_expense_title"
             tool:text="Total Amount: " />
 
@@ -51,10 +51,10 @@
             android:id="@+id/txt_expense_paid_by"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_marginStart="@dimen/ten_dp"
             android:textColor="@color/black"
             android:textSize="@dimen/small_font"
-            app:layout_constraintLeft_toRightOf="@id/txt_date"
+            app:layout_constraintStart_toEndOf="@id/txt_date"
             app:layout_constraintTop_toBottomOf="@id/txt_expense_amount"
             tool:text="Paid By" />
 
@@ -62,8 +62,7 @@
             android:id="@+id/img_arrow"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:rotation="-90"
-            android:src="@android:drawable/arrow_down_float"
+            android:src="@drawable/up_arrow"
             app:layout_constraintBottom_toBottomOf="@id/txt_expense_paid_by"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/txt_expense_title" />

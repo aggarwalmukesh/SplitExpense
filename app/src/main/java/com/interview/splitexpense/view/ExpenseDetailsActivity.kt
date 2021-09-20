@@ -26,19 +26,25 @@ class ExpenseDetailsActivity : AppCompatActivity() {
         val txtExpenseDescription = findViewById<TextView>(R.id.txt_expense_description)
         val txtExpenseSplitWith = findViewById<TextView>(R.id.txt_expense_split_with)
         val txtExpenseOwe = findViewById<TextView>(R.id.txt_expense_owe)
+        val labelAmountOwe = findViewById<TextView>(R.id.label_amount_owe)
         val expenseItem = intent.getParcelableExtra<Expense>(ExpenseConstants.KEY_EXPENSE)
         val usersList = intent.getStringArrayListExtra(ExpenseConstants.KEY_USERS)
 
         expenseItem?.apply {
             txtExpensetitle.text = title
-            txtExpenseDate.text = ExpenseConstants.DATE_FORMAT_EXPENSE_DETAIL.format(Date())
+            txtExpenseDate.text = ExpenseConstants.DATE_FORMAT_EXPENSE_DETAIL.format(
+                ExpenseConstants.DATE_FORMAT_EXPENSE_ENTRY.parse(date))
             txtExpenseAmount.text = "$amount INR"
             txtExpenseDescription.text = description
-            txtExpensePaidBy.text = if (DatabaseClient
-                .getLoggedInUser(this@ExpenseDetailsActivity) == paidBy) "You" else paidBy
-
+            if (DatabaseClient.getLoggedInUser(this@ExpenseDetailsActivity) == paidBy) {
+                labelAmountOwe.text = "You get back:"
+                txtExpensePaidBy.text = "You"
+            } else {
+                labelAmountOwe.text = "You owe:"
+                txtExpensePaidBy.text = paidBy
+            }
+            txtExpenseOwe.text = "${amount?.toInt()?.div(4)} INR"
             txtExpenseSplitWith.text = usersList.toString()
-            txtExpenseOwe.text = "$amount INR"
         }
     }
 

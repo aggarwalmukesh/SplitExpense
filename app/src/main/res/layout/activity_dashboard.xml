@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="No Expese Record Found"
+            android:text="@string/no_record_found"
             android:textColor="@color/design_default_color_primary"
             android:textSize="@dimen/medium_font" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ten_dp"
             android:gravity="center"
-            android:text="Click + button to add new record"
+            android:text="@string/str_click_plus_button"
             android:textColor="@color/design_default_color_primary"
             android:textSize="@dimen/small_font" />
 
@@ -51,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/twenty_dp"
-        android:src="@android:drawable/ic_menu_add"
+        android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

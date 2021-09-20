@@ -8,10 +8,10 @@ import com.interview.splitexpense.model.Users
 
 class LoginViewModel(val application: Application) : ViewModel() {
 
-    val users = arrayOf(Users(name = "Anuradha", email = "a", password = "a"),
-        Users(name = "Raju", email = "b", password = "b"),
-        Users(name = "Baburao Apte", email = "c", password = "c"),
-        Users(name = "Ghanshyam", email = "d", password = "d"))
+    val users = arrayOf(Users(name = "Anuradha", email = "Anuradha@gmail.com", password = "test"),
+        Users(name = "Raju", email = "Raju@gmail.com", password = "test"),
+        Users(name = "Baburao Apte", email = "Baburao@gmail.com", password = "test"),
+        Users(name = "Ghanshyam", email = "Ghanshyam@gmail.com", password = "test"))
 
     private var loginData: MutableLiveData<Users> = DatabaseClient.registerForLogin()
     private var usersData: MutableLiveData<List<Users>> = DatabaseClient.registerUsers()

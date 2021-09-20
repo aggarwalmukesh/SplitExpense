@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty_dp"
-            android:text="Expense Date"
+            android:text="@string/str_expense_date"
             android:textSize="@dimen/small_font" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty_dp"
-            android:text="Total Expense Amount"
+            android:text="@string/str_total_amount"
             android:textSize="@dimen/small_font" />
 
         <TextView
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty_dp"
-            android:text="Description"
+            android:text="@string/str_description"
             android:textSize="@dimen/small_font" />
 
         <TextView
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty_dp"
-            android:text="Paid By:"
+            android:text="@string/str_paid_by"
             android:textSize="@dimen/small_font" />
 
         <TextView
@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty_dp"
-            android:text="Split equally with:"
+            android:text="@string/split_equally_with"
             android:textSize="@dimen/small_font" />
 
         <TextView
@@ -109,7 +109,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty_dp"
-            android:text="You owe:"
+            android:text=""
+            android:id="@+id/label_amount_owe"
             android:textSize="@dimen/small_font" />
 
         <TextView

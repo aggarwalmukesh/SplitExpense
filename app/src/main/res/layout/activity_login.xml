@@ -2,24 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/design_default_color_primary"
     android:layout_height="match_parent"
+    android:background="@color/design_default_color_primary"
     android:padding="@dimen/twenty_dp">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/str_email"/>
+            android:hint="@string/str_email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -28,15 +28,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/twenty_dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/str_email" />
+            android:hint="@string/str_pwd" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,12 +44,12 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/twenty_dp"
         android:layout_marginTop="@dimen/twenty_dp"
+        android:background="@color/design_default_color_primary_dark"
+        android:padding="@dimen/twenty_dp"
         android:text="@string/str_login"
         android:textColor="@color/white"
-        android:background="@color/design_default_color_primary_dark"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_password" />
 </androidx.constraintlayout.widget.ConstraintLayout>

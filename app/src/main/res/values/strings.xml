@@ -12,5 +12,13 @@
     <string name="str_date">Date (dd/mm/yyyy)</string>
     <string name="str_title">Title</string>
     <string name="split_title">Split Expense</string>
+    <string name="split_equally_with">Split equally with:</string>
     <string name="enter_input">Mandatory Field</string>
+    <string name="str_logged_in">Logged in as:</string>
+    <string name="str_logout">Logout</string>
+    <string name="str_pwd">Password</string>
+    <string name="str_expense_date">Expense Date</string>
+    <string name="str_total_amount">Total Expense Amount</string>
+    <string name="no_record_found">No Expese Record Found</string>
+    <string name="str_click_plus_button">Click + button to add new record</string>
 </resources>

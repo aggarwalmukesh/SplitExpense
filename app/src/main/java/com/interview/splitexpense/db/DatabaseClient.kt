@@ -32,7 +32,10 @@ object DatabaseClient {
 
     fun updateLoggedInUser(context: Context, userName: String?) =
         getSharedPreferences(context).edit().putString(ExpenseConstants.KEY_PREF_USER, userName)
-            .apply()
+            .commit()
+
+    fun logoutUser(context: Context) =
+        getSharedPreferences(context).edit().clear().commit()
 
     fun getLoggedInUser(context: Context) =
         getSharedPreferences(context).getString(ExpenseConstants.KEY_PREF_USER, null)
@@ -58,7 +61,6 @@ object DatabaseClient {
         CoroutineScope(Dispatchers.IO).launch {
             validUserMutableData.postValue(getDao(context).fetchUser(email, password))
         }
-
 
     fun fetchExpenses(context: Context) =
         CoroutineScope(Dispatchers.IO).launch {

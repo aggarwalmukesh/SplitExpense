@@ -11,7 +11,7 @@ interface ExpenseDao {
     @Query("SELECT * FROM users")
     fun getAllUsers(): List<Users>
 
-    @Query("SELECT * FROM users WHERE email= :userEmail AND password= :pwd")
+    @Query("SELECT * FROM users WHERE lower(email)= :userEmail OR lower(name)= :userEmail AND password= :pwd")
     fun fetchUser(userEmail: String, pwd: String): Users
 
     @Query("SELECT * FROM expense")
