@@ -3,6 +3,15 @@
 - Architecture Followed : MVVM
 - Room Database
 
+#Features Implemented
+- Login screen created with prefilled users
+- Dashboard created
+- Add Expesne
+- Expense Details Screen
+- Profile Screen
+- Logout Feature
+
+
 Screenshots attached
 
 Login Creentials:
