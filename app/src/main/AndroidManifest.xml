@@ -11,17 +11,21 @@
         android:theme="@style/Theme.SplitExpense">
         <activity
             android:name=".view.ProfileActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".view.ExpenseDetailsActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:label="@string/split_title" />
         <activity
             android:name=".view.DashboardActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:label="@string/split_title" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:label="@string/split_title">
             <intent-filter>
