@@ -39,11 +39,12 @@ class ExpenseDetailsActivity : AppCompatActivity() {
             if (DatabaseClient.getLoggedInUser(this@ExpenseDetailsActivity) == paidBy) {
                 labelAmountOwe.text = "You get back:"
                 txtExpensePaidBy.text = "You"
+                txtExpenseOwe.text = "${amount?.toInt()?.times(3)?.div(4)} INR"
             } else {
                 labelAmountOwe.text = "You owe:"
                 txtExpensePaidBy.text = paidBy
+                txtExpenseOwe.text = "${amount?.toInt()?.div(4)} INR"
             }
-            txtExpenseOwe.text = "${amount?.toInt()?.div(4)} INR"
             txtExpenseSplitWith.text = usersList.toString()
         }
     }
